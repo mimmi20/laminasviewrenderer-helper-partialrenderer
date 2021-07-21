@@ -16,6 +16,7 @@ use Laminas\View\Exception\ExceptionInterface;
 use Laminas\View\Exception\InvalidArgumentException;
 use Laminas\View\Exception\RuntimeException;
 use Laminas\View\Model\ModelInterface;
+use Laminas\View\Resolver\ResolverInterface;
 use Mezzio\LaminasView\LaminasViewRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRenderer;
 use PHPUnit\Framework\Exception;
@@ -187,5 +188,72 @@ final class PartialRendererTest extends TestCase
         $helper = new PartialRenderer($renderer);
 
         self::assertSame($expected, $helper->render($partial, $data));
+    }
+
+    /**
+     * @throws Exception
+     * @throws ExceptionInterface
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function testRenderPartialWithArrayPartial3(): void
+    {
+        $expected = 'renderedPartial';
+        $partial  = ['abc', 'bcd'];
+        $data     = null;
+
+        $renderer = $this->getMockBuilder(LaminasViewRenderer::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $renderer->expects(self::once())
+            ->method('render')
+            ->with('abc', [])
+            ->willReturn($expected);
+
+        assert($renderer instanceof LaminasViewRenderer);
+        $helper = new PartialRenderer($renderer);
+
+        self::assertSame($expected, $helper->render($partial, $data));
+    }
+
+    /**
+     * @throws Exception
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function testGetEngine(): void
+    {
+        $renderer = $this->getMockBuilder(LaminasViewRenderer::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $renderer->expects(self::never())
+            ->method('render');
+
+        assert($renderer instanceof LaminasViewRenderer);
+        $helper = new PartialRenderer($renderer);
+
+        self::assertSame($helper, $helper->getEngine());
+    }
+
+    /**
+     * @throws Exception
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function testSetResolver(): void
+    {
+        $resolver = $this->getMockBuilder(ResolverInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $resolver->expects(self::never())
+            ->method('resolve');
+
+        $renderer = $this->getMockBuilder(LaminasViewRenderer::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $renderer->expects(self::never())
+            ->method('render');
+
+        assert($renderer instanceof LaminasViewRenderer);
+        $helper = new PartialRenderer($renderer);
+
+        self::assertSame($helper, $helper->setResolver($resolver));
     }
 }
