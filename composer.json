@@ -21,7 +21,7 @@
     "container-interop/container-interop": "<1.2.0"
   },
   "require-dev": {
-    "infection/infection": "^0.23.0",
+    "infection/infection": "^0.24.0",
     "laminas/laminas-config": "^3.5.0",
     "laminas/laminas-servicemanager": "^3.7.0",
     "mimmi20/coding-standard": "^2.2.3",
