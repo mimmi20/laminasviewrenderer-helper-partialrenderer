@@ -21,7 +21,7 @@
     "container-interop/container-interop": "<1.2.0"
   },
   "require-dev": {
-    "laminas/laminas-config": "^3.5.0",
+    "laminas/laminas-config": "^3.6.0",
     "laminas/laminas-servicemanager": "^3.7.0",
     "mimmi20/coding-standard": "^2.4.2",
     "phpstan/extension-installer": "^1.1.0",
