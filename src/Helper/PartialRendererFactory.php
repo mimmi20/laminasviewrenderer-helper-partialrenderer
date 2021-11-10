@@ -16,6 +16,8 @@ use Interop\Container\ContainerInterface;
 use Mezzio\LaminasView\LaminasViewRenderer;
 use Psr\Container\ContainerExceptionInterface;
 
+use function assert;
+
 final class PartialRendererFactory
 {
     /**
@@ -23,8 +25,10 @@ final class PartialRendererFactory
      */
     public function __invoke(ContainerInterface $container): PartialRenderer
     {
-        return new PartialRenderer(
-            $container->get(LaminasViewRenderer::class)
-        );
+        $renderer = $container->get(LaminasViewRenderer::class);
+
+        assert($renderer instanceof LaminasViewRenderer);
+
+        return new PartialRenderer($renderer);
     }
 }
