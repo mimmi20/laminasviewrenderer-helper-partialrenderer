@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/laminasviewrenderer-helper-partialrenderer package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -45,7 +45,9 @@ final class PartialRendererTest extends TestCase
         $helper = new PartialRenderer($renderer);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Unable to render partial: A view partial supplied as an array must contain one value: the partial view script');
+        $this->expectExceptionMessage(
+            'Unable to render partial: A view partial supplied as an array must contain one value: the partial view script',
+        );
         $this->expectExceptionCode(0);
 
         $helper->render($partial, $data);
@@ -53,7 +55,6 @@ final class PartialRendererTest extends TestCase
 
     /**
      * @throws Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExceptionInterface
      */
     public function testRenderPartial(): void
@@ -79,7 +80,6 @@ final class PartialRendererTest extends TestCase
 
     /**
      * @throws Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExceptionInterface
      */
     public function testRenderPartialWithArrayPartial(): void
@@ -104,7 +104,6 @@ final class PartialRendererTest extends TestCase
 
     /**
      * @throws Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExceptionInterface
      */
     public function testRenderPartialWithPartialModel(): void
@@ -140,7 +139,6 @@ final class PartialRendererTest extends TestCase
 
     /**
      * @throws Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExceptionInterface
      */
     public function testRenderPartialWithPartialModelWithoutPartial(): void
@@ -168,7 +166,6 @@ final class PartialRendererTest extends TestCase
     /**
      * @throws Exception
      * @throws ExceptionInterface
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testRenderPartialWithArrayPartial2(): void
     {
@@ -193,7 +190,6 @@ final class PartialRendererTest extends TestCase
     /**
      * @throws Exception
      * @throws ExceptionInterface
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testRenderPartialWithArrayPartial3(): void
     {
@@ -215,10 +211,7 @@ final class PartialRendererTest extends TestCase
         self::assertSame($expected, $helper->render($partial, $data));
     }
 
-    /**
-     * @throws Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
+    /** @throws Exception */
     public function testGetEngine(): void
     {
         $renderer = $this->getMockBuilder(LaminasViewRenderer::class)
@@ -233,10 +226,7 @@ final class PartialRendererTest extends TestCase
         self::assertSame($helper, $helper->getEngine());
     }
 
-    /**
-     * @throws Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
+    /** @throws Exception */
     public function testSetResolver(): void
     {
         $resolver = $this->getMockBuilder(ResolverInterface::class)
