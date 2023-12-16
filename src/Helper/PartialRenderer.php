@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/laminasviewrenderer-helper-partialrenderer package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,7 +13,6 @@ declare(strict_types = 1);
 namespace Mimmi20\LaminasView\Helper\PartialRenderer\Helper;
 
 use ArrayAccess;
-use Laminas\View\Exception;
 use Laminas\View\Exception\InvalidArgumentException;
 use Laminas\View\Exception\RuntimeException;
 use Laminas\View\Model\ModelInterface;
@@ -26,11 +25,10 @@ use function is_array;
 
 final class PartialRenderer implements PartialRendererInterface, RendererInterface
 {
-    private LaminasViewRenderer $renderer;
-
-    public function __construct(LaminasViewRenderer $renderer)
+    /** @throws void */
+    public function __construct(private readonly LaminasViewRenderer $renderer)
     {
-        $this->renderer = $renderer;
+        // nothing to do
     }
 
     /**
@@ -43,27 +41,28 @@ final class PartialRenderer implements PartialRendererInterface, RendererInterfa
      *
      * @throws RuntimeException
      * @throws InvalidArgumentException
+     *
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
-    public function render($nameOrModel, $values = null): string
+    public function render($nameOrModel, $values = null)
     {
-        if (null === $nameOrModel || '' === $nameOrModel || [] === $nameOrModel) {
-            throw new Exception\RuntimeException(
-                'Unable to render partial: No partial view script provided'
-            );
+        if ($nameOrModel === null || $nameOrModel === '' || $nameOrModel === []) {
+            throw new RuntimeException('Unable to render partial: No partial view script provided');
         }
 
         if (is_array($nameOrModel)) {
-            if (2 !== count($nameOrModel)) {
-                throw new Exception\InvalidArgumentException(
+            if (count($nameOrModel) !== 2) {
+                throw new InvalidArgumentException(
                     'Unable to render partial: A view partial supplied as '
-                    . 'an array must contain one value: the partial view script'
+                    . 'an array must contain one value: the partial view script',
                 );
             }
 
             $nameOrModel = $nameOrModel[0];
         }
 
-        if (null === $values) {
+        if ($values === null) {
             $values = [];
         }
 
@@ -77,12 +76,19 @@ final class PartialRenderer implements PartialRendererInterface, RendererInterfa
         return $this->renderer->render($nameOrModel, $model);
     }
 
+    /**
+     * @return $this
+     *
+     * @throws void
+     */
     public function getEngine(): self
     {
         return $this;
     }
 
     /**
+     * @throws void
+     *
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      */
     public function setResolver(ResolverInterface $resolver): self
