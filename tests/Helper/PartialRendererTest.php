@@ -86,7 +86,7 @@ final class PartialRendererTest extends TestCase
     {
         $partial  = 'testPartial';
         $expected = 'renderedPartial';
-        $data     = [$partial, 'test'];
+        $data     = ['x' => $partial, 'y' => 'test'];
 
         $renderer = $this->getMockBuilder(LaminasViewRenderer::class)
             ->disableOriginalConstructor()
@@ -110,7 +110,7 @@ final class PartialRendererTest extends TestCase
     {
         $expected = 'renderedPartial';
         $partial  = 'testPartial';
-        $data     = [$partial, 'test'];
+        $data     = ['x' => $partial, 'y' => 'test'];
 
         $model = $this->getMockBuilder(ModelInterface::class)
             ->disableOriginalConstructor()
@@ -145,7 +145,7 @@ final class PartialRendererTest extends TestCase
     {
         $expected = 'renderedPartial';
         $partial  = 'testPartial';
-        $data     = [$partial, 'test'];
+        $data     = ['x' => $partial, 'y' => 'test'];
 
         $renderer = $this->getMockBuilder(LaminasViewRenderer::class)
             ->disableOriginalConstructor()
