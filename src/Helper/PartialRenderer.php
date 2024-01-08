@@ -34,8 +34,8 @@ final class PartialRenderer implements PartialRendererInterface, RendererInterfa
     /**
      * Processes a view script and returns the output.
      *
-     * @param array<int, string>|ModelInterface|string|null                    $nameOrModel The script/resource process, or a view model
-     * @param array<(int|string), mixed>|ArrayAccess<(int|string), mixed>|null $values      Values to use during rendering
+     * @param array<int, string>|ModelInterface|string|null        $nameOrModel The script/resource process, or a view model
+     * @param array<string, mixed>|ArrayAccess<string, mixed>|null $values      Values to use during rendering
      *
      * @return string the script output
      *
