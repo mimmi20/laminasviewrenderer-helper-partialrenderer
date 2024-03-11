@@ -17,7 +17,8 @@
   },
   "require": {
     "php": "^8.1.0",
-    "mezzio/mezzio-laminasviewrenderer": "^2.15.1"
+    "mezzio/mezzio-laminasviewrenderer": "^2.15.1",
+    "psr/container": "^1.1.2 || ^2.0.2"
   },
   "require-dev": {
     "ext-ctype": "*",
