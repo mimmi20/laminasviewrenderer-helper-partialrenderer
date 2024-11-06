@@ -16,7 +16,7 @@
     "source": "https://github.com/mimmi20/laminasviewrenderer-helper-partialrenderer"
   },
   "require": {
-    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
     "mezzio/mezzio-laminasviewrenderer": "^2.16.0",
     "psr/container": "^1.1.2 || ^2.0.2"
   },
