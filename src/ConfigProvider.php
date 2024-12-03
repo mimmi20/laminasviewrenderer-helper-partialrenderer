@@ -16,7 +16,7 @@ namespace Mimmi20\LaminasView\Helper\PartialRenderer;
 final class ConfigProvider
 {
     /**
-     * Return general-purpose laminas-navigation configuration.
+     * Return general-purpose configuration.
      *
      * @return array<string, array<string, array<string, string>>>
      *

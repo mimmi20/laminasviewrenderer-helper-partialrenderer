@@ -16,6 +16,7 @@ namespace Mimmi20Test\LaminasView\Helper\PartialRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\ConfigProvider;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRendererInterface;
+use Override;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -24,6 +25,7 @@ final class ConfigProviderTest extends TestCase
     private ConfigProvider $provider;
 
     /** @throws void */
+    #[Override]
     protected function setUp(): void
     {
         $this->provider = new ConfigProvider();
