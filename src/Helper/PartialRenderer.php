@@ -20,14 +20,15 @@ use Laminas\View\Model\ModelInterface;
 use Laminas\View\Renderer\RendererInterface;
 use Laminas\View\Resolver\ResolverInterface;
 use Mezzio\LaminasView\LaminasViewRenderer;
+use Override;
 
 use function count;
 use function is_array;
 
-final class PartialRenderer implements PartialRendererInterface, RendererInterface
+final readonly class PartialRenderer implements PartialRendererInterface, RendererInterface
 {
     /** @throws void */
-    public function __construct(private readonly LaminasViewRenderer $renderer)
+    public function __construct(private LaminasViewRenderer $renderer)
     {
         // nothing to do
     }
@@ -46,6 +47,7 @@ final class PartialRenderer implements PartialRendererInterface, RendererInterfa
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
+    #[Override]
     public function render($nameOrModel, $values = null)
     {
         if ($nameOrModel === null || $nameOrModel === '' || $nameOrModel === []) {
@@ -77,11 +79,8 @@ final class PartialRenderer implements PartialRendererInterface, RendererInterfa
         return $this->renderer->render($nameOrModel, $model);
     }
 
-    /**
-     * @return $this
-     *
-     * @throws void
-     */
+    /** @throws void */
+    #[Override]
     public function getEngine(): self
     {
         return $this;
@@ -92,6 +91,7 @@ final class PartialRenderer implements PartialRendererInterface, RendererInterfa
      *
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      */
+    #[Override]
     public function setResolver(ResolverInterface $resolver): self
     {
         return $this;

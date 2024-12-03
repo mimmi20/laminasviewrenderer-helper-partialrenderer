@@ -16,6 +16,7 @@ namespace Mimmi20Test\LaminasView\Helper\PartialRenderer\Helper;
 use Mezzio\LaminasView\LaminasViewRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRendererFactory;
+use Override;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -28,6 +29,7 @@ final class PartialRendererFactoryTest extends TestCase
     private PartialRendererFactory $factory;
 
     /** @throws void */
+    #[Override]
     protected function setUp(): void
     {
         $this->factory = new PartialRendererFactory();

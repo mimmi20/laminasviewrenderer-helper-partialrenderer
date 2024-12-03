@@ -1,7 +1,7 @@
 parameters:
   level: max
 
-  phpVersion: 80100 # PHP 8.1
+  phpVersion: 80300 # PHP 8.3
 
   parallel:
     maximumNumberOfProcesses: 1
@@ -101,9 +101,10 @@ parameters:
     function: 6
 
   type_coverage:
-    return: 89.4
-    param: 42.8
-    property: 100
+    return_type: 89.4
+    param_type: 42.8
+    property_type: 100
+    constant_type: 100
     # also, how many files has declare strict types
     declare: 100
 
