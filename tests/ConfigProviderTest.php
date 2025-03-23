@@ -16,25 +16,15 @@ namespace Mimmi20Test\LaminasView\Helper\PartialRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\ConfigProvider;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRendererInterface;
-use Override;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 
 final class ConfigProviderTest extends TestCase
 {
-    private ConfigProvider $provider;
-
-    /** @throws void */
-    #[Override]
-    protected function setUp(): void
-    {
-        $this->provider = new ConfigProvider();
-    }
-
     /** @throws Exception */
     public function testReturnedArrayContainsDependencies(): void
     {
-        $config = ($this->provider)();
+        $config = (new ConfigProvider())();
         self::assertIsArray($config);
         self::assertCount(1, $config);
 
@@ -59,7 +49,7 @@ final class ConfigProviderTest extends TestCase
     /** @throws Exception */
     public function testReturnedArrayContainsDependencies2(): void
     {
-        $dependencies = $this->provider->getDependencyConfig();
+        $dependencies = (new ConfigProvider())->getDependencyConfig();
         self::assertIsArray($dependencies);
         self::assertCount(2, $dependencies);
         self::assertArrayHasKey('factories', $dependencies);
