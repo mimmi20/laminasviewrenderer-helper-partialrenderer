@@ -16,7 +16,7 @@ namespace Mimmi20Test\LaminasView\Helper\PartialRenderer\Helper;
 use Mezzio\LaminasView\LaminasViewRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRenderer;
 use Mimmi20\LaminasView\Helper\PartialRenderer\Helper\PartialRendererFactory;
-use Override;
+use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -26,18 +26,11 @@ use function assert;
 
 final class PartialRendererFactoryTest extends TestCase
 {
-    private PartialRendererFactory $factory;
-
-    /** @throws void */
-    #[Override]
-    protected function setUp(): void
-    {
-        $this->factory = new PartialRendererFactory();
-    }
-
     /**
      * @throws Exception
      * @throws ContainerExceptionInterface
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testInvocation(): void
     {
@@ -52,7 +45,7 @@ final class PartialRendererFactoryTest extends TestCase
             ->willReturn($renderer);
 
         assert($container instanceof ContainerInterface);
-        $helper = ($this->factory)($container);
+        $helper = (new PartialRendererFactory())($container);
 
         self::assertInstanceOf(PartialRenderer::class, $helper);
     }
