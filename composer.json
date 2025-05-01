@@ -29,7 +29,7 @@
     "ext-xmlwriter": "*",
     "infection/infection": "^0.29.14",
     "laminas/laminas-servicemanager": "^3.22.1",
-    "laminas/laminas-view": "^2.38.0",
+    "laminas/laminas-view": "^2.39.0",
     "mimmi20/coding-standard": "^6.0.28",
     "nikic/php-parser": "^5.4.0",
     "phpstan/extension-installer": "^1.4.3",
