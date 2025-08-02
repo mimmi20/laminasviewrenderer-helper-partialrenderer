@@ -1,6 +1,6 @@
 {
   "name": "mimmi20/laminasviewrenderer-helper-partialrenderer",
-  "description": "Provides a render helper for Laminas View",
+  "description": "Provides a render helper for Laminas View used for Mezzio Navigation",
   "license": "MIT",
   "type": "library",
   "authors": [
