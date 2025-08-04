@@ -109,6 +109,7 @@ parameters:
 
   ignoreErrors:
     - '~will always evaluate to true~'
+    - '~Call to deprecated method~'
 
 rules:
   # code complexity

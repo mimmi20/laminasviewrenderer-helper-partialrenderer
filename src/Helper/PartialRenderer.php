@@ -45,7 +45,6 @@ final readonly class PartialRenderer implements PartialRendererInterface, Render
      * @throws InvalidArgumentException
      *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
     #[Override]
     public function render($nameOrModel, $values = null)
